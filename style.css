@@ -4,9 +4,22 @@
 
 
 .color {
-    border-bottom: 1px solid black;
+    border: 1px solid black;
     width: 60px;
     height: 60px;
+}
+
+#color-palette .color:nth-child(1){
+    background-color: black;
+}
+#color-palette .color:nth-child(2){
+    background-color: blue;
+}
+#color-palette .color:nth-child(3){
+    background-color: yellow;
+}
+#color-palette .color:nth-child(4){
+    background-color: red;
 }
 
 .pixel{
