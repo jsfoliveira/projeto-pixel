@@ -1,43 +1,49 @@
-// 6.  Defina a cor preta como cor inicial. Ao carregar a página, a cor preta já deve estar selecionada para pintar os pixels. O elemento da cor preta deve possuir, inicialmente, a classe selected;
-
-window.onload = function corInicial() {
-  let corPreta = document.getElementsByClassName('color')[0];
-  corPreta.classList.add('selected');
+window.onload = function () {
+  //COR INICIAL PRETA AO CARREGAR A PÁGINA
+  function corInicial() {
+    let corPreta = document.querySelectorAll('.color')[0];
+    corPreta.classList.add('selected');
+  }
+  //SELECIONAR COR AO CLICAR NA PALETA
 };
 
-// 7. Clicar em uma das cores da paleta faz com que ela seja selecionada e utilizada para preencher os pixels no quadro.
+// let color = document.querySelectorAll('.color');
+// color.addEventListener('click', function pegarCor(event) {
+//   let selected = document.querySelector('.selected');
+//   selected.classList.remove('selected');
+//   let cor = event.target.innerText;
+//   return cor;
+// });
 
-//acessa o color da paleta
-//cria array pra percorrer cada color da paleta
-//em cada color vou fazer um addEventListener para escutar o evento click e acionar a função pegar a cor
-//vou remover da lista a classe selected
-//vou pegar uma variável que vai ler o texto que está em cada .color e transformar em cor
-
-let color = document.querySelector('.color');
-color.addEventListener('click', function pegarCor(event) {
-  color.classList.remove('selected');
-  let cor = event.target.innerText;
-  return cor;
-});
-
-// let paleta = document.querySelector('#color-palette');
-// for (i = 0; i < paleta.length; i += 1) {
-//   paleta[i].addEventListener('click', function pegarCor(event) {
-//     paleta[i].classList.remove('selected');
-//     let cor = event.target.innerText;
-//     paleta[i].style.backgroundColor = cor; //falta adicionar a cor
-//   });
-// }
 // 8. Clicar em um pixel dentro do quadro após selecionar uma cor na paleta faz com que o pixel seja preenchido com a cor selecionada.
 
-// let pixel = document.querySelectorAll('.pixel');
+// let pixel = document.querySelector('.pixel');
 // pixel.addEventListener('click', function mudarCor(event) {
 //   pixel.style.backgroundColor = cor;
 // });
 
-//9. Verifica se ao clicar no botão, o quadro de pixels é totalmente preenchido de branco
+//9. Verifica se ao clicar no botão ("clear-board"), o quadro de pixels é totalmente preenchido de branco
 let botao = document.getElementById('clear-board');
-botao.addEventListener('click', function () {
-  let colunaDePixel = document.getElementById('pixel-board');
-  colunaDePixel.style.backgroundColor = 'white';
-});
+function pintarDeBranco() {
+  for (let i = 0; i < 25; i += 1) {
+    let pixel = document.querySelectorAll('.pixel');
+    pixel[i].style.backgroundColor = 'white';
+  }
+}
+botao.addEventListener('click', pintarDeBranco);
+
+//Verifica se nenhum valor for colocado no input ao clicar no botão, um `alert` é exibido com o texto: 'Board inválido!'failed
+
+//CORRETO
+
+let btnVqv = document.getElementById('generate-board');
+function digitarInput(event) {
+  let input = document.getElementById('board-size');
+  let conteudoInput = event.target;
+
+  if (conteudoInput.value == '') {
+    alert('Board inválido!');
+  }
+}
+
+btnVqv.addEventListener('click', digitarInput);
