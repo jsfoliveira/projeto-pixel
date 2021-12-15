@@ -1,11 +1,42 @@
 window.onload = function () {
-  //COR INICIAL PRETA AO CARREGAR A PÁGINA
-  function corInicial() {
-    let corPreta = document.querySelectorAll('.color')[0];
-    corPreta.classList.add('selected');
+  console.log('carregou o dom');
+
+  //Ao carregar, começar o selected na cor preta
+  var primeiraCor = document.getElementsByClassName('color')[0];
+  function primeiroPintarPreto(event) {
+    event.target.classList.add('selected');
   }
-  //SELECIONAR COR AO CLICAR NA PALETA
+  primeiraCor.addEventListener('click', primeiroPintarPreto);
+
+  //Ao carregar, todo o pixel estar na cor branca
+  function corBrancaInicial() {
+    let pixel = document.querySelectorAll('.pixel');
+    pixel.style.backgroundColor = 'white';
+  }
+  console.log(corBrancaInicial);
 };
+
+//Ao clicar no color, definir como classe selected
+var primeiraCor = document.getElementsByClassName('color')[0];
+var segundaCor = document.getElementsByClassName('color')[1];
+var terceiraCor = document.getElementsByClassName('color')[2];
+var quartaCor = document.getElementsByClassName('color')[3];
+
+function definirClasseSelected(event) {
+  let selected = document.querySelector('.selected');
+  selected.classList.remove('selected');
+  event.target.classList.add('selected'); //add vai adicionar valores da classe específica definida no classList. Fonte: https://developer.mozilla.org/
+}
+primeiraCor.addEventListener('click', definirClasseSelected);
+segundaCor.addEventListener('click', definirClasseSelected);
+terceiraCor.addEventListener('click', definirClasseSelected);
+quartaCor.addEventListener('click', definirClasseSelected);
+
+//Clicar na paleta e pegar a cor
+
+// Ao clicar no pixel, pintar com a cor selecionada
+
+//SELECIONAR COR AO CLICAR NA PALETA
 
 // let color = document.querySelectorAll('.color');
 // color.addEventListener('click', function pegarCor(event) {
@@ -24,13 +55,13 @@ window.onload = function () {
 
 //9. Verifica se ao clicar no botão ("clear-board"), o quadro de pixels é totalmente preenchido de branco
 let botao = document.getElementById('clear-board');
-function pintarDeBranco() {
+function btnpintarDeBranco() {
   for (let i = 0; i < 25; i += 1) {
-    let pixel = document.querySelectorAll('.pixel');
+    var pixel = document.querySelectorAll('.pixel');
     pixel[i].style.backgroundColor = 'white';
   }
 }
-botao.addEventListener('click', pintarDeBranco);
+botao.addEventListener('click', btnpintarDeBranco);
 
 //Verifica se nenhum valor for colocado no input ao clicar no botão, um `alert` é exibido com o texto: 'Board inválido!'failed
 

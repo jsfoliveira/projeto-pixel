@@ -2,6 +2,11 @@
     text-align: center;
 }
 
+#color-palette,
+.coluna-pixel {
+    display: flex;
+}
+
 
 .color {
     border: 1px solid black;
@@ -13,7 +18,7 @@
     background-color: black;
 }
 #color-palette .color:nth-child(2){
-    background-color: blue;
+    background-color: rgb(5, 47, 187);
 }
 #color-palette .color:nth-child(3){
     background-color: yellow;
