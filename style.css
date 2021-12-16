@@ -18,7 +18,7 @@
     background-color: black;
 }
 #color-palette .color:nth-child(2){
-    background-color: rgb(5, 47, 187);
+    background-color: rgb(25, 47, 187);
 }
 #color-palette .color:nth-child(3){
     background-color: yellow;
