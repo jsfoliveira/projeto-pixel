@@ -1,33 +1,5 @@
-//ERRO: não funciona
-//Ao carregar, deve começar o selected na cor preta
-// window.onload = function () {
-//   var pixelInicial = document.querySelectorAll('.pixel');
-//   function pintarPreto() {
-//     for (let i = 0; i < pixelInicial.length; i += 1) {
-//       if (pixelInicial[i].style.backgroundColor === 'white') {
-//         pixelInicial[i].style.backgroundColor === 'black';
-//       }
-//     }
-//   }
 
-//   pixelInicial[i].addEventListener('click', pintarPreto);
 
-//   pintarPreto();
-// };
-
-//   //ao carregar, ativar a função ()
-//   var pixel = document.getElementsByClassName('pixel');
-//   function pintarPixelPreto(event) {
-//     let selected = document.querySelector('.selected');
-
-//     var primeiraCor = document.getElementsByClassName('color')[0];
-//     if (primeiraCor) {
-//       return event.target.classList.add('selected');
-//     }
-//   }
-//   pixel.addEventListener('click', pintarPixelPreto);
-// };
-//CORRETO
 //Ao clicar no color, definir como classe selected
 var primeiraCor = document.getElementsByClassName('color')[0];
 var segundaCor = document.getElementsByClassName('color')[1];
@@ -45,49 +17,87 @@ segundaCor.addEventListener('click', definirClasseSelected);
 terceiraCor.addEventListener('click', definirClasseSelected);
 quartaCor.addEventListener('click', definirClasseSelected);
 
-//ERRO: não funciona
-// Pintar pixel com cor selecionada
-// function pintarPixel(event) {
-var pixel = document.getElementsByClassName('pixel');
-for (let i = 0; i < pixel.length; i += 1) {
-  // event.target.style.backgroundColor = 'color';
-  pixel[i].addEventListener('click', pintar);
-}
-// }
-// pintarPixel();
 
-function pintar(event) {
+function pintarPixel (){
+  // Pintar pixel com cor selecionada
+  //Tive ajuda do meu colega Imar Mendes
+  var pixel = document.getElementsByClassName('pixel');//acessei o que será pintado
+  for (let i = 0; i < pixel.length; i += 1) {  //preciso percorrer todo o pixel-board
+    pixel[i].addEventListener('click', pintar);
+  } 
+}
+pintarPixel();
+function pintar(event) {                     //getComputedStyle retorna valores da propriedade css. Vai aplicar o background do selected
   event.target.style.backgroundColor = getComputedStyle(
     document.querySelector('.selected')
   ).backgroundColor;
-  
 }
 
-//ERRO: Pinta tudo, mas está dando erro no teste
-//9. Verifica se ao clicar no botão ("clear-board"), o quadro de pixels é totalmente preenchido de branco
+//Verifica se ao clicar no botão ("clear-board"), o quadro de pixels é totalmente preenchido de branco
 
 let botao = document.getElementById('clear-board');
 function btnpintarDeBranco() {
   var selected = document.querySelector('.selected');
-  selected.classList.remove('selected');
+  selected.classList.remove('selected');   //eu preciso remover o selected antes de pintar
   let limparPixel = document.querySelectorAll('.pixel');
-  for (let i = 0; i < limparPixel.length; i += 1) {
+  for (let i = 0; i < limparPixel.length; i += 1) {   //vou percorrer todo o pixel-board e pintar de branco
     limparPixel[i].style.backgroundColor = 'white';
   }
 }
-botao.addEventListener('click', btnpintarDeBranco);
+botao.addEventListener('click', btnpintarDeBranco);  //ao clicar no botao, vou ter um escutador que vai acionar a função de pintar de branco
 
-//CORRETO
+
 //Verifica se nenhum valor for colocado no input ao clicar no botão, um `alert` é exibido com o texto: 'Board inválido!'failed
 
 let btnVqv = document.getElementById('generate-board');
 function digitarInput(event) {
   let input = document.getElementById('board-size');
-  let conteudoInput = event.target;
 
-  if (conteudoInput.value == '') {
+  if (input.value == '') {
     alert('Board inválido!');
   }
 }
 
 btnVqv.addEventListener('click', digitarInput);
+
+//Ao digitar no input um valor, a caixa de pixel seja limpada. Digitar um valor maior que 0 e até 10 no input, apertar no botao VQV e aumentar o número de coluna-pixel.
+
+
+let caixaPixel = document.querySelector('#pixel-board');
+let colunaPixel = document.querySelectorAll('.coluna-pixel');
+let input = document.querySelector('#board-size');
+
+function limparPixel (){
+    //while(se esse argumento for verdadeiro){
+    //     então faça isso
+    // }
+    while (caixaPixel.firstChild){
+        caixaPixel.removeChild(caixaPixel.firstChild);
+    //elementoPai.removeChild(elementoPai.firstCHild)
+    }
+}
+input.addEventListener('keyup', limparPixel);
+
+function criarCaixa (){
+//primeiro limpa a caixa de pixel
+    limparPixel ();
+//valor é o valor digitado no input
+    const valor = input.value;
+//esse valor tem que ser maior que zero
+  if (valor > 0){
+
+    for (let coluna = 0; coluna < valor; coluna += 1){
+        let colunaPixel = document.createElement('section');
+        
+        caixaPixel.appendChild(colunaPixel);
+        colunaPixel.classList.add('coluna-pixel');
+        for (let linha = 0; linha < valor; linha += 1){
+          let pixel = document.createElement('button');
+          colunaPixel.appendChild(pixel);
+          pixel.classList.add('pixel');
+        }
+    }
+    pintarPixel();
+  }
+}
+btnVqv.addEventListener('click',criarCaixa);

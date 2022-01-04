@@ -1,39 +1,71 @@
+body {
+  height: 900px;
+  background-image: linear-gradient(to right top, #f4acd6, #ec9ed4, #e391d4, #d885d4, #ca79d6, #bb6ed0, #ab64c9, #9b5ac3, #894cb2, #773fa1, #653290, #542580);
+}
+
+#color-palette {
+  margin-left: 400px;
+  margin-top: 20px;
+}
+
+.botoes {
+  text-align: center;
+  margin-top: 18px;
+  height: 15px;
+}
+
+#clear-board:hover,
+#generate-board:hover {
+  background-color: rgba(155, 151, 151, 0.637);
+  cursor: pointer;
+}
+
+#pixel-board {
+  margin-left: 420px;
+  margin-top: 40px;
+}
+
 #title {
-    text-align: center;
+  text-align: center;
 }
 
 #color-palette,
 .coluna-pixel {
-    display: flex;
+  display: flex;
 }
 
 
 .color {
-    border: 1px solid black;
-    width: 60px;
-    height: 60px;
+  border: 1px solid black;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
 
-#color-palette .color:nth-child(1){
-    background-color: black;
-}
-#color-palette .color:nth-child(2){
-    background-color: rgb(25, 47, 187);
-}
-#color-palette .color:nth-child(3){
-    background-color: yellow;
-}
-#color-palette .color:nth-child(4){
-    background-color: red;
+#color-palette .color:nth-child(1) {
+  background-color: black;
 }
 
-.pixel{
-    width: 40px;
-    height: 40px;
-    background-color: white;
-   border: 1px solid black;
+#color-palette .color:nth-child(2) {
+  background-color: rgb(25, 47, 187);
+}
+
+#color-palette .color:nth-child(3) {
+  background-color: yellow;
+}
+
+#color-palette .color:nth-child(4) {
+  background-color: red;
+}
+
+.pixel {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 #clear-board {
-    background-color: white;
+  background-color: white;
 }
