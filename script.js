@@ -1,5 +1,3 @@
-
-
 //Ao clicar no color, definir como classe selected
 var primeiraCor = document.getElementsByClassName('color')[0];
 var segundaCor = document.getElementsByClassName('color')[1];
@@ -62,11 +60,10 @@ btnVqv.addEventListener('click', digitarInput);
 
 //Ao digitar no input um valor, a caixa de pixel seja limpada. Digitar um valor maior que 0 e até 10 no input, apertar no botao VQV e aumentar o número de coluna-pixel.
 
-
 let caixaPixel = document.querySelector('#pixel-board');
 let colunaPixel = document.querySelectorAll('.coluna-pixel');
 let input = document.querySelector('#board-size');
-
+//uma colega me deu a dica de usar while,mas eu que fiz a lógica
 function limparPixel (){
     //while(se esse argumento for verdadeiro){
     //     então faça isso
@@ -85,7 +82,6 @@ function criarCaixa (){
     const valor = input.value;
 //esse valor tem que ser maior que zero
   if (valor > 0){
-
     for (let coluna = 0; coluna < valor; coluna += 1){
         let colunaPixel = document.createElement('section');
         
@@ -97,6 +93,7 @@ function criarCaixa (){
           pixel.classList.add('pixel');
         }
     }
+//Roberval me deu a dica de criar essa função pintarPixel e chamar dentro dessa função
     pintarPixel();
   }
 }

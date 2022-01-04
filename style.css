@@ -1,17 +1,18 @@
 body {
-  height: 900px;
-  background-image: linear-gradient(to right top, #f4acd6, #ec9ed4, #e391d4, #d885d4, #ca79d6, #bb6ed0, #ab64c9, #9b5ac3, #894cb2, #773fa1, #653290, #542580);
+  background-image: url(./pintura.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* height: 900px;
+  background-image: linear-gradient(to right top, #f4acd6, #ec9ed4, #e391d4, #d885d4, #ca79d6, #bb6ed0, #ab64c9, #9b5ac3, #894cb2, #773fa1, #653290, #542580); */
 }
 
 #color-palette {
-  margin-left: 400px;
-  margin-top: 20px;
+  text-align: center;
 }
 
 .botoes {
   text-align: center;
-  margin-top: 18px;
-  height: 15px;
+  margin-top: 20px;
 }
 
 #clear-board:hover,
@@ -20,20 +21,9 @@ body {
   cursor: pointer;
 }
 
-#pixel-board {
-  margin-left: 420px;
-  margin-top: 40px;
-}
-
 #title {
   text-align: center;
 }
-
-#color-palette,
-.coluna-pixel {
-  display: flex;
-}
-
 
 .color {
   border: 1px solid black;
@@ -58,14 +48,21 @@ body {
   background-color: red;
 }
 
+#clear-board {
+  background-color: white;
+}
+
+#pixel-board {
+  padding-left: 580px;
+  padding-top: 50px;
+
+}
+
 .pixel {
   width: 40px;
   height: 40px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid rgba(247, 241, 241, 0.719);
+  outline-style: none;
   cursor: pointer;
-}
-
-#clear-board {
-  background-color: white;
 }
